@@ -3,6 +3,7 @@ Kullanıcı, şehir ekleyebilir, sorgulayabilir, listeleyebilir ve silebilir.
 Aşağıda, projede kullanılan sınıf ve yöntemler özetlenmiştir.
 
 Amaç: Şehirlerin hava durumu bilgilerini tutmak ve yönetmek.
+
 Metotlar:
 __init__: Başlangıçta hava durumu verilerini tutan bir liste oluşturur.
 sehir_ekle(ad, sicaklik): Yeni şehir ekler veya mevcut bir şehrin sıcaklığını günceller.
