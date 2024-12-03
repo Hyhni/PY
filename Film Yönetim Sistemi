@@ -2,7 +2,7 @@ Bu uygulama, filmleri listeleme, ekleme ve silme işlemlerini yapmanızı sağla
 Kullanıcı, film bilgilerini türüne ve yılına göre filtreleyebilir.
 Projenin temel özellikleri aşağıda açıklanmıştır.
 
-Kullanılan Fonksiyonlar
+Kullanılan Fonksiyonlar:
 film_ekle(): Yeni bir film ekler. Kullanıcıdan film adı, yönetmen, yıl ve tür bilgilerini alır.
 filmleri_listele():
 Tüm filmleri görüntüler.
