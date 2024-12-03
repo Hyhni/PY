@@ -1,81 +1,13 @@
-class HavaDurumuUygulamasi:
-    def __init__(self):
-        self.hava_durumu = [
-            {"sehir": "İstanbul", "sıcaklık": 15, "durum": "Hava güzel, rahat giyin."},
-            {"sehir": "Ankara", "sıcaklık": 5, "durum": "Serin, mont almayı unutmayın."}
-        ]
+Bu uygulama, şehirlerin sıcaklık bilgilerini tutar ve kullanıcıların şehir ekleme, sorgulama, listeleme ve silme işlemlerini yapmasına olanak tanır.
+Aşağıda uygulamanın temel işlevleri açıklanmıştır.
 
-    def sehir_ekle(self, ad, sicaklik):
-        for sehir in self.hava_durumu:
-            if sehir["sehir"].lower() == ad.lower():
-                print(f"{ad} zaten mevcut, sıcaklık güncelleniyor.")
-                sehir["sıcaklık"] = sicaklik
-                sehir["durum"] = self.tavsiye_ver(sicaklik)
-                return
-        print(f"{ad} başarıyla eklendi.")
-        yeni_sehir = {"sehir": ad, "sıcaklık": sicaklik, "durum": self.tavsiye_ver(sicaklik)}
-        self.hava_durumu.append(yeni_sehir)
+Amaç: Şehirlerin sıcaklık ve hava durumu bilgilerini yönetmek.
+Sınıfın Metotları
+__init__: Başlangıçta örnek şehir bilgilerini içeren bir liste oluşturur.
+sehir_ekle(ad, sicaklik): Şehir ekler veya mevcut şehrin sıcaklığını günceller.
+tavsiye_ver(sicaklik): Sıcaklığa göre uygun hava durumu önerisi verir.
+sehir_sorgula(ad): Girilen şehrin hava durumu bilgilerini görüntüler.
+sehir_sil(ad): Girilen şehri listeden siler.
+tum_sehirleri_listele(): Tüm şehirleri ve bilgilerini listeler.
 
-    def tavsiye_ver(self, sicaklik):
-        if sicaklik < 0:
-            return "Soğuk, sıkı giyinin."
-        elif 0 <= sicaklik < 15:
-            return "Serin, mont almayı unutmayın."
-        else:
-            return "Hava güzel, rahat giyin."
 
-    def sehir_sorgula(self, ad):
-        for sehir in self.hava_durumu:
-            if sehir["sehir"].lower() == ad.lower():
-                print(f"{ad} için sıcaklık: {sehir['sıcaklık']}°C")
-                print(f"Durum: {sehir['durum']}")
-                return
-        print(f"{ad} bulunamadı.")
-
-    def sehir_sil(self, ad):
-        for sehir in self.hava_durumu:
-            if sehir["sehir"].lower() == ad.lower():
-                self.hava_durumu.remove(sehir)
-                print(f"{ad} başarıyla silindi.")
-                return
-        print(f"{ad} bulunamadı, silme işlemi yapılamaz.")
-
-    def tum_sehirleri_listele(self):
-        if self.hava_durumu:
-            print("\nBütün Şehirler:")
-            for sehir in self.hava_durumu:
-                print(f"{sehir['sehir']}: {sehir['sıcaklık']}°C - {sehir['durum']}")
-        else:
-            print("Liste boş, hiç şehir eklenmemiş.")
-
-uygulama = HavaDurumuUygulamasi()
-
-while True:
-    print("\nHava Durumu Uygulaması")
-    print("1. Şehir Ekle")
-    print("2. Şehir Sorgula")
-    print("3. Bütün Şehirleri Listele")
-    print("4. Şehir Sil")
-    print("5. Çıkış")
-    secim = input("Seçiminizi yapın: ")
-
-    if secim == "1":
-        ad = input("Şehir adı: ")
-        try:
-            sicaklik = float(input("Sıcaklık (°C): "))
-            uygulama.sehir_ekle(ad, sicaklik)
-        except ValueError:
-            print("Geçersiz sıcaklık değeri! Sayı giriniz.")
-    elif secim == "2":
-        ad = input("Şehir adı: ")
-        uygulama.sehir_sorgula(ad)
-    elif secim == "3":
-        uygulama.tum_sehirleri_listele()
-    elif secim == "4":
-        ad = input("Silmek istediğiniz şehir adı: ")
-        uygulama.sehir_sil(ad)
-    elif secim == "5":
-        print("Çıkış yapılıyor...")
-        break
-    else:
-        print("Geçersiz seçim! Tekrar deneyin.")
