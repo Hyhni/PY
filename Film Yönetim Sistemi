@@ -1,0 +1,83 @@
+filmler = [
+    {"ad": "Eşkıya", "yonetmen": "Yılmaz Güney", "yil": "1996", "tur": "Aksiyon"},
+    {"ad": "Vizontele", "yonetmen": "Yılmaz Erdoğan, Ömer Faruk Sorak", "yil": "2001", "tur": "Komedi"},
+    {"ad": "Babam ve Oğlum", "yonetmen": "Çetin Kaya", "yil": "2005", "tur": "Dram"},
+    {"ad": "Aşk Tesadüfleri Sever", "yonetmen": "Ömer Faruk Sorak", "yil": "2011", "tur": "Romantik"},
+    {"ad": "Yol", "yonetmen": "Yılmaz Güney, Şerif Gören", "yil": "1982", "tur": "Dram"}
+]
+
+def film_ekle():
+    print("\nFilm Ekle")
+    ad = input("Film adı: ")
+    yonetmen = input("Yönetmen: ")
+    yil = input("Yıl: ")
+    tur = input("Tür: ")
+    yeni_film = {"ad": ad, "yonetmen": yonetmen, "yil": yil, "tur": tur}
+    filmler.append(yeni_film)
+    print("Film eklendi!")
+
+def filmleri_listele():
+    if not filmler:
+        print("\nFilm listesi boş.")
+        return
+
+    print("\nFilmleri Listele")
+    print("1. Tüm filmleri listele")
+    print("2. Türüne göre listele")
+    print("3. Yılına göre listele")
+    secim = input("Seçiminizi yapın (1-3): ")
+
+    if secim == "1":
+        for film in filmler:
+            print(f"Ad: {film['ad']}, Yönetmen: {film['yonetmen']}, Yıl: {film['yil']}, Tür: {film['tur']}")
+    elif secim == "2":
+        tur = input("Filtrelenecek tür: ").lower()
+        bulunanlar = [film for film in filmler if film["tur"].lower() == tur]
+        if bulunanlar:
+            for film in bulunanlar:
+                print(f"Ad: {film['ad']}, Yönetmen: {film['yonetmen']}, Yıl: {film['yil']}, Tür: {film['tur']}")
+        else:
+            print("Bu türe uygun film bulunamadı.")
+    elif secim == "3":
+        yil = input("Filtrelenecek yıl: ")
+        bulunanlar = [film for film in filmler if film["yil"] == yil]
+        if bulunanlar:
+            for film in bulunanlar:
+                print(f"Ad: {film['ad']}, Yönetmen: {film['yonetmen']}, Yıl: {film['yil']}, Tür: {film['tur']}")
+        else:
+            print("Bu yıla uygun film bulunamadı.")
+    else:
+        print("Geçersiz seçim!")
+
+def film_sil():
+    print("\nFilm Sil")
+    ad = input("Silinecek filmin adı: ").lower()
+    for film in filmler:
+        if film["ad"].lower() == ad:
+            filmler.remove(film)
+            print("Film silindi!")
+            return
+    print("Belirtilen isimde bir film bulunamadı.")
+
+def menu():
+    while True:
+        print("\nFilm Yönetim Sistemi")
+        print("1. Film Ekle")
+        print("2. Filmleri Listele")
+        print("3. Film Sil")
+        print("4. Çıkış")
+        secim = input("Seçiminizi yapın (1-4): ")
+
+        if secim == "1":
+            film_ekle()
+        elif secim == "2":
+            filmleri_listele()
+        elif secim == "3":
+            film_sil()
+        elif secim == "4":
+            print("Çıkış yapılıyor...")
+            break
+        else:
+            print("Geçersiz seçim, lütfen tekrar deneyin.")
+
+menu()
