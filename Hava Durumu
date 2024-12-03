@@ -2,7 +2,8 @@ Bu uygulama, şehirlerin sıcaklık bilgilerini tutar ve kullanıcıların şehi
 Aşağıda uygulamanın temel işlevleri açıklanmıştır.
 
 Amaç: Şehirlerin sıcaklık ve hava durumu bilgilerini yönetmek.
-Sınıfın Metotları
+
+Sınıfın Metotları:
 __init__: Başlangıçta örnek şehir bilgilerini içeren bir liste oluşturur.
 sehir_ekle(ad, sicaklik): Şehir ekler veya mevcut şehrin sıcaklığını günceller.
 tavsiye_ver(sicaklik): Sıcaklığa göre uygun hava durumu önerisi verir.
